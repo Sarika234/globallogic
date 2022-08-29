@@ -2,6 +2,7 @@ package com.globallogic.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -190,6 +191,15 @@ public class AdminController {
 			name.add(a.getName());
 		}
 		return name ;
+	}
+	
+	@GetMapping("/student/{name}")
+	public List<Student> getStudentdetails(@PathVariable("name") String name){
+		List<Student> student = studentservice.getStudent();
+		
+		List<Student> studentName = student.stream().filter(e -> e.getName().equalsIgnoreCase(name))
+										.collect(Collectors.toList());
+		return studentName;
 	}
 	
 }

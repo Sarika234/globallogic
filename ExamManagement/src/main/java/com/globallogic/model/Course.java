@@ -16,12 +16,12 @@ public class Course {
 	private String name;
 	
 	@Column
-	private Date duration;
+	private String duration;
 	
 	@OneToMany
 	List<Subject> subject;
 
-	public Course(int id, String name, Date duration, List<Subject> subject) {
+	public Course(int id, String name, String duration, List<Subject> subject) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -49,11 +49,11 @@ public class Course {
 		this.name = name;
 	}
 
-	public Date getDuration() {
+	public String getDuration() {
 		return duration;
 	}
 
-	public void setDuration(Date duration) {
+	public void setDuration(String duration) {
 		this.duration = duration;
 	}
 

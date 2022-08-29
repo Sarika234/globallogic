@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.globallogic.model.Course;
 import com.globallogic.model.Student;
 import com.globallogic.model.Subject;
-
+import com.globallogic.service.CourseService;
 import com.globallogic.service.StudentService;
 import com.globallogic.service.SubjectService;
 
@@ -20,6 +21,9 @@ public class StudentController {
 	
 	@Autowired
 	SubjectService subjectservice;
+	
+	@Autowired
+	CourseService courseservice;
 	
 	@GetMapping("/")
 	public List<Student> getStudent(){
@@ -41,6 +45,11 @@ public class StudentController {
 	@GetMapping("/subjects")
 	public List<Subject> getSubject(){
 		return subjectservice.getSubject();
+	}
+	
+	@GetMapping("/courses")
+	public List<Course> getCourse(){
+		return courseservice.getCourse();
 	}
 	
 }
